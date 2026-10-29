@@ -6,6 +6,17 @@
 
 当前版本 **0.2.1 · Alpha**，源码采用 MIT 许可证。项目采用标准 `src` 布局，包含静态检查、回归测试、Windows CI 和性能基准。
 
+[English](README.en.md) · [快速开始](#安装与启动) · [反馈问题](https://github.com/songxinj/qingshot/issues) · [参与开发](CONTRIBUTING.md)
+
+[![Windows checks](https://github.com/songxinj/qingshot/actions/workflows/ci.yml/badge.svg)](https://github.com/songxinj/qingshot/actions/workflows/ci.yml)
+
+- **截图与标注**：框选、矩形、箭头、文字、画笔、马赛克和撤销。
+- **贴到桌面**：截图置顶，拖动、缩放、调整透明度，随时对照。
+- **本机识字**：RapidOCR 优先，Windows OCR 回退，识别后的原文可以编辑。
+- **研究实现**：PySide6 桌面界面、有界后台任务、多屏坐标逻辑和自动化测试。
+
+**隐私边界：截图和 OCR 在本机处理；点击“翻译”后，原文会发送给 Google，连接失败时再发送给 MyMemory。处理敏感内容时请仅使用本地截图和识字。当前需 Python 环境，尚无独立 EXE。**
+
 ![截图与图上文字编辑](docs/assets/capture-ui.png)
 
 界面采用单排图标工具栏、按需展开的颜色面板和图上文字编辑。更多预览见 [界面说明](docs/ui-reference.md)，版本变化见 [CHANGELOG.md](CHANGELOG.md)。
@@ -138,6 +149,8 @@ python benchmarks/benchmark.py
 ## 开源与维护
 
 请阅读 [MIT 许可证](LICENSE)、[参与开发](CONTRIBUTING.md)、[安全与隐私](SECURITY.md) 和 [第三方组件说明](THIRD_PARTY_NOTICES.md)。CI 配置已提供，本地验证不代表远程 CI 已通过。
+
+如果轻映对你有帮助，欢迎给项目一个 Star，或通过 Issue 分享使用场景、复现步骤和改进建议。
 
 `data/`、`test-artifacts/`、虚拟环境、缓存、构建目录及本地开发工具不属于公开源码。提交或分发前应检查实际文件列表；直接压缩整个工作目录会包含被 `.gitignore` 忽略的文件。
 

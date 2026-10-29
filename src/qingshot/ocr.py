@@ -56,6 +56,10 @@ def _get_rapid_ocr():
         return _RAPID_ENGINE
     with _ENGINE_LOCK:
         if _RAPID_ENGINE is None:
+            import onnxruntime
+
+            # Official Windows builds enable telemetry unless explicitly disabled.
+            onnxruntime.disable_telemetry_events()
             from rapidocr_onnxruntime import RapidOCR
 
             _RAPID_ENGINE = RapidOCR()

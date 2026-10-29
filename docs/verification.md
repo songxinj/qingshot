@@ -51,6 +51,12 @@ python tools/verify_installed.py --package-dir test-artifacts/wheel-install --da
 
 ## 已记录的历史结果
 
+### 2026-10-30：隐私修复与依赖验证
+
+- 离线测试共 53 项，51 项通过、2 项外部服务集成测试按开关跳过；Ruff 静态检查与格式检查通过。
+- 安全回归确认 ONNX Runtime 遥测在 OCR 引擎创建前关闭；使用 Pillow 13.0.0 的隔离环境验证兼容性，并以合成图片验证真实本地 OCR。
+- 重新构建源码包和 wheel，核对 21 个 Python / PowerShell 模块内容一致；wheel 隔离安装后，实际进程激活、退出后重启及注入配置读取通过。源码包包含英文 README，归档未包含本机数据目录。
+
 ### 2026-10-29：开源整理与更名验证
 
 - 项目更名为「轻映 · QingShot」，包名与命令为 `qingshot`，启动脚本为 `start.cmd`；旧数据环境变量、既有安装数据目录和单实例身份继续兼容。

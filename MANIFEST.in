@@ -1,0 +1,27 @@
+include LICENSE README.md CHANGELOG.md CONTRIBUTING.md SECURITY.md THIRD_PARTY_NOTICES.md
+include pyproject.toml requirements.txt requirements.lock.txt app.py
+include *.cmd
+graft src/qingshot
+graft tests
+graft tools
+graft benchmarks
+graft docs
+graft .github
+include .gitignore .gitattributes
+
+# Source releases contain code and public documentation, never local state.
+prune .dev-tools
+prune .venv
+prune venv
+prune .ruff_cache
+prune .pytest_cache
+prune .mypy_cache
+prune build
+prune dist
+prune sdist
+prune data
+prune test-artifacts
+prune src/qingshot.egg-info
+exclude docs/fix-report-2026-10-28.md
+global-exclude __pycache__ *.py[cod] *.log .env .env.* .coverage .coverage.*
+global-exclude .DS_Store Thumbs.db desktop.ini

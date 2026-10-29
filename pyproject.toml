@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qingshot"
+dynamic = ["version"]
+description = "Native Windows screenshots, annotations, pinned images and local OCR"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "QingShot contributors" }]
+dependencies = ["PySide6>=6.8,<7", "rapidocr-onnxruntime>=1.4,<2"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Operating System :: Microsoft :: Windows :: Windows 10",
+  "Operating System :: Microsoft :: Windows :: Windows 11",
+  "Programming Language :: Python :: 3",
+  "Topic :: Multimedia :: Graphics :: Capture :: Screen Capture",
+]
+
+[project.optional-dependencies]
+dev = ["ruff==0.17.2", "coverage>=7.6,<8"]
+
+[project.urls]
+Homepage = "https://github.com/songxinj/qingshot"
+Repository = "https://github.com/songxinj/qingshot"
+Issues = "https://github.com/songxinj/qingshot/issues"
+
+[project.gui-scripts]
+qingshot = "qingshot.application:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+version = {attr = "qingshot.__version__"}
+
+[tool.setuptools.package-data]
+qingshot = ["resources/*.ps1"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [".dev-tools", "data", "test-artifacts", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*.py" = ["E402"]
+"benchmarks/*.py" = ["E402"]
+"tools/*.py" = ["E402"]
+
+[tool.coverage.run]
+source = ["qingshot"]
+omit = ["*/__main__.py"]
+
+[tool.coverage.report]
+show_missing = true
